@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+#app {
+  text-align: center;
+  background-color: #eee;
+}
+#app h1 {
+  padding: 20px 0;
+}
+#app .holder .article {
+  width: 800px;
+  height: 200px;
+  margin: 10px auto;
+  padding: 10px;
+  overflow: hidden;
+  background-color: #fff;
+}
+.blue-border {
+  border: 1px solid #1b72c4;
+}
+#app .holder .article .left-content {
+  max-width: 110px;
+  max-height: 110px;
+}
+#app .holder .article .left-content img {
+  max-width: 100px;
+  max-height: 100px;
+  float: left;
+}
+#app .holder .article .main-content .info-holder {
+  float: left;
+  margin-left: 10px;
+  margin-right: 200px;
+}
+#app .holder .article .main-content .info-holder .title {
+  display: inline-block;
+  float: left;
+}
+#app .holder .article .main-content .info-holder small:first-of-type {
+  float: left;
+  margin-left: 10px;
+}
+#app .holder .article .main-content .info-holder p {
+  float: left;
+  width: 500px;
+  max-height: 50px;
+  overflow: hidden;
+}
+#app .holder .article .main-content .submit-holder {
+  height: 30px;
+  margin: 20px 0 0 10px;
+  float: left;
+}
+#app .holder .article .main-content .submit-holder .thumb {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  border: 1px solid;
+}
+#app .holder .article .right-content {
+  margin-left: 80px;
+  margin-top: 50px;
+  font-size: 20px;
+}

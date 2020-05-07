@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/index.css">
+    <title>Voting System</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div>
+                <h1>Voting System</h1>
+                <div class=" mb-3 holder">
+                    <div class="row no-gutters article" :class="{ 'blue-border': subject.vote >= 20 }"
+                        v-for="subject in sortSubjects" :key="subject.id">
+                        <div class="col-md-3 left-content">
+                            <img :src="subject.subjectImage" class="card-img">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body main-content">
+                                <div class="info-holder">
+                                    <h5 class="card-title title">{{ subject.title }}</h5>
+                                    <small>#{{ subject.id }}</small>
+                                    <p class="card-text">{{ subject.description }}</p>
+                                </div>
+
+                                <div class="card-text submit-holder">
+                                    <small class="text-muted">Submitted by :</small>
+                                    <img class="thumb" :src="subject.avatar">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 right-content">
+                            <i class="fa fa-arrow-up" aria-hidden="true" @click="upVote(subject.id)"></i>
+                            <span>{{ subject.vote }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div id="app">
+        <div class="container">
+            <h1>Voting System</h1>
+            <div class="holder">
+                <div class="article" v-for="subject in subjects" :key="subject.id">
+                    <div class="left-content">
+                        <img :src="subject.subjectImage">
+                    </div>
+                    <div class="main-content">
+                        <div class="info-holder">
+                            <div>
+                                <h3 class="title">{{ subject.title }}</h3>
+                                <small>#{{ subject.id }}</small>
+                            </div>
+                            <p>{{ subject.description }}</p>
+                        </div>
+                        <div class="submit-holder">
+                            <small>Submitted by :</small>
+                            <img class="thumb" :src="subject.avatar">
+                        </div>
+                    </div>
+                    <div class="right-content">
+                        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                        <span>{{ subject.vote }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const posts = [
+            {
+                "id": 1,
+                "title": "VP Sales",
+                "description": "Donec diam neque, vestibulum eget, vulputate ut, ultrices Donec diam neque, vestibulum eget, vulputate ut, ultrices Donec diam neque, vestibulum eget, vulputate ut, ultrices",
+                "url": '#',
+                //"rank": 1,
+                "avatar": "https://robohash.org/molestiaeetquis.bmp?size=50x50&set=set1",
+                "subjectImage": "http://dummyimage.com/210x153.jpg/ff4444/ffffff",
+                "vote": 16
+            }, {
+                "id": 2,
+                "title": "Professor",
+                "description": "Nullam porttitor lacus at turpis. Donec posuere metus vitae Nullam porttitor lacus at turpis. Donec posuere metus vitaeNullam porttitor lacus at turpis. Donec posuere metus vitae",
+                "url": '#',
+                //"rank": 2,
+                "avatar": "https://robohash.org/ipsaperspiciatisut.jpg?size=50x50&set=set1",
+                "subjectImage": "http://dummyimage.com/117x201.jpg/ff4444/ffffff",
+                "vote": 14
+            }, {
+                "id": 3,
+                "title": "Administrative Assistant II",
+                "description": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu Phasellus sit amet erat. Nulla tempus. Vivamus in felis euPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu",
+                "url": '#',
+                //"rank": 3,
+                "avatar": "https://robohash.org/utoptiomollitia.bmp?size=50x50&set=set1",
+                "subjectImage": "http://dummyimage.com/109x174.jpg/5fa2dd/ffffff",
+                "vote": 12
+            }, {
+                "id": 4,
+                "title": "Technical Writer",
+                "description": "Phasellus in felis. Donec semper sapien a libero. Nam dui. Phasellus in felis. Donec semper sapien a libero. Nam duiPhasellus in felis. Donec semper sapien a libero. Nam dui.",
+                "url": '#',
+                //"rank": 4,
+                "avatar": "https://robohash.org/minimadolorumquia.bmp?size=50x50&set=set1",
+                "subjectImage": "http://dummyimage.com/186x103.png/cc0000/ffffff",
+                "vote": 18
+            }
+        ]
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                'subjects': posts
+            },
+            computed: {
+                sortSubjects() {
+                    return this.subjects.sort((a, b) => {
+                        return b.vote - a.vote
+                    });
+                }
+            },
+            methods: {
+                upVote(subjectId) {
+                    const subject = this.subjects.find(
+                        subject => subject.id === subjectId
+                    );
+                    subject.vote++;
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>
